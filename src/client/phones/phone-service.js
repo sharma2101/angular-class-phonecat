@@ -1,10 +1,10 @@
 PhoneService.$inject = ['$resource'];
 function PhoneService($resource){
-  return $resource('phones/:phoneId.json', {}, {
-    query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
-  });
+  return $resource('/api/phonecat/phones/:phoneId');
 }
 
 angular.module('phonecat.phones.service', [
   'ngResource'
-]).factory('Phone', PhoneService);
+])
+.factory('Phone', PhoneService)
+;

@@ -5,7 +5,7 @@ describe('Phonecat directives', function() {
     it('renders a phone snippet view', inject(function( $compile, $rootScope ){
       // Set up - declaring data
       var $scope = $rootScope.$new();
-      var MOCK_DATA = { imageUrl: 'images/xyz.jpg' };
+      var MOCK_DATA = { images: ['images/xyz.jpg'] };
       $scope.P = MOCK_DATA;
 
       var template = '<div phone-snippet="P" />';
@@ -16,7 +16,7 @@ describe('Phonecat directives', function() {
       $scope.$digest();
 
       // Assert - test the element
-      $element.find('img').attr('src').should.equal(MOCK_DATA.imageUrl);
+      $element.find('img').attr('src').should.equal(MOCK_DATA.images[0]);
     }));
   });
 });
