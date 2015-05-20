@@ -1,0 +1,32 @@
+{
+  "stassets": {
+    "verbose": true,
+    "root": "./src/client",
+    "vendors": {
+      "prefix": [
+        "node_modules"
+      ],
+      "js": [
+        "rupert-plugin-angular/node_modules/angular-builds/angular-route.js"
+      ],
+      "css": []
+    },
+    "angular": {
+      "useJquery": true
+    },
+    "scripts": {
+      "types": [
+        "animation"
+      ]
+    }
+  },
+  "tls": false,
+  "routing": [
+    "./src/server/allow.coffee",
+    "./src/server/**/route.coffee"
+  ],
+  "static": {
+    "phones": "src/phones/",
+    "img": "src/img/"
+  }
+}
