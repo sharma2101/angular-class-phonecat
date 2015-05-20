@@ -3,10 +3,10 @@ describe('PhoneCat controllers', function() {
     var scope, ctrl, $httpBackend;
 
     beforeEach(module('phonecat.phones.list.controller'));
-    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+    beforeEach(module('phonecat.phones.service.mock'));
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, PhoneListMock) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/phones.json').
-          respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+      new PhoneListMock($httpBackend);
 
       scope = $rootScope.$new();
       ctrl = $controller('PhoneListController', {$scope: scope});
@@ -15,7 +15,6 @@ describe('PhoneCat controllers', function() {
     it('should create "phones" model with 2 phones fetched from xhr', function() {
       scope.phones.should.equalData([]);
       $httpBackend.flush();
-
       scope.phones.should.equalData( [{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
     });
 

@@ -1,19 +1,13 @@
 describe('PhoneCat controllers', function() {
   beforeEach(module('phonecat.phones.detail.controller'));
+  beforeEach(module('phonecat.phones.service.mock'));
 
   describe('PhoneDetailCtrl', function(){
-    var scope, $httpBackend, ctrl,
-        xyzPhoneData = function() {
-          return {
-            name: 'phone xyz',
-                images: ['image/url1.png', 'image/url2.png']
-          };
-        };
+    var scope, $httpBackend, ctrl;
 
-    beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $routeParams, PhoneListMock) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData());
-      $httpBackend.expectGET('phones/phones.json').respond([]);
+      new PhoneListMock($httpBackend);
 
       $routeParams.phoneId = 'xyz';
       scope = $rootScope.$new();
@@ -25,7 +19,10 @@ describe('PhoneCat controllers', function() {
       scope.phone.should.equalData({});
       $httpBackend.flush();
 
-      scope.phone.should.equalData(xyzPhoneData());
+      scope.phone.should.equalData({
+        name: 'phone xyz',
+            images: ['image/url1.png', 'image/url2.png']
+      });
     });
   });
 });
