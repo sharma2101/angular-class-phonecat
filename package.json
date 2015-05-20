@@ -8,6 +8,8 @@
     "rename": "echo 'Coming Soon!'"
   },
   "dependencies": {
+    "debug": "^2.2.0",
+    "mongodb": "^2.0.33",
     "rupert": "^0.3.1",
     "rupert-plugin-angular": "^0.1.1",
     "rupert-plugin-bootstrap": "^0.1.1"

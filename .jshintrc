@@ -24,6 +24,7 @@
     "inject": false,
     "expect": false,
     "console": false,
-    "jQuery": false
+    "jQuery": false,
+    "superroute": false
   }
 }
