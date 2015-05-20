@@ -1,7 +1,3 @@
-'use strict';
-
-/* Directives */
-
 angular.module('phonecat.phones.snippet.directive', [
   'phonecat.phones.snippet.controller',
   'phones.snippet.template'

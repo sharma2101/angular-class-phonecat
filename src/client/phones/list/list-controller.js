@@ -1,5 +1,3 @@
-'use strict';
-
 PhoneListController.$inject = ['$scope', 'Phone'];
 function PhoneListController($scope, Phone) {
   $scope.phones = Phone.query();

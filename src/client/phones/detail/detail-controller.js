@@ -1,5 +1,3 @@
-'use strict';
-
 PhoneDetailController.$inject = [
   '$scope',
   '$routeParams',
@@ -12,14 +10,14 @@ function PhoneDetailController($scope, $routeParams, Phone) {
     var search = phone.name.split(' ')[0];
     Phone.query(function(phones){
         $scope.related = phones.filter(function(p){
-          return p.name.indexOf(search) == 0;
+          return p.name.indexOf(search) === 0;
         });
     });
   });
 
   $scope.setImage = function(imageUrl) {
     $scope.mainImageUrl = imageUrl;
-  }
+  };
 }
 
 angular.module('phonecat.phones.detail.controller', [

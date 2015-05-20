@@ -18,7 +18,12 @@
     "describe": false,
     "it": false,
     "beforeEach": false,
+    "should": false,
+    "expect": false,
     "module": false,
-    "inject": false
+    "inject": false,
+    "expect": false,
+    "console": false,
+    "jQuery": false
   }
 }

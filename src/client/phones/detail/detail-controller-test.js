@@ -1,15 +1,4 @@
-'use strict';
-
 describe('PhoneCat controllers', function() {
-
-  beforeEach(function(){
-    this.addMatchers({
-      toEqualData: function(expected) {
-        return angular.equals(this.actual, expected);
-      }
-    });
-  });
-
   beforeEach(module('phonecat.phones.detail.controller'));
 
   describe('PhoneDetailCtrl', function(){
@@ -18,7 +7,7 @@ describe('PhoneCat controllers', function() {
           return {
             name: 'phone xyz',
                 images: ['image/url1.png', 'image/url2.png']
-          }
+          };
         };
 
     beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
@@ -33,10 +22,10 @@ describe('PhoneCat controllers', function() {
 
 
     it('should fetch phone detail', function() {
-      expect(scope.phone).toEqualData({});
+      scope.phone.should.equalData({});
       $httpBackend.flush();
 
-      expect(scope.phone).toEqualData(xyzPhoneData());
+      scope.phone.should.equalData(xyzPhoneData());
     });
   });
 });

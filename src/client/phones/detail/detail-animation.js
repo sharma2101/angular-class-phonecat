@@ -3,7 +3,7 @@ angular.module('phonecat.phones.detail.animation', [
 ]).animation('.phone', function() {
 
   var animateUp = function(element, className, done) {
-    if(className != 'active') {
+    if(className !== 'active') {
       return;
     }
     element.css({
@@ -22,10 +22,10 @@ angular.module('phonecat.phones.detail.animation', [
         element.stop();
       }
     };
-  }
+  };
 
   var animateDown = function(element, className, done) {
-    if(className != 'active') {
+    if(className !== 'active') {
       return;
     }
     element.css({
@@ -43,7 +43,7 @@ angular.module('phonecat.phones.detail.animation', [
         element.stop();
       }
     };
-  }
+  };
 
   return {
     addClass: animateUp,

@@ -1,5 +1,3 @@
-'use strict';
-
 describe('PhoneCat controllers', function() {
 
   beforeEach(module('phonecat.phones.snippet.controller'));
@@ -13,16 +11,16 @@ describe('PhoneCat controllers', function() {
     }));
 
     it('defaults to a small image', function(){
-      expect(scope.showBigImage).toBe(false);
+      scope.showBigImage.should.equal(false);
     });
 
     it('toggles image size', function(){
       scope.resize();
-      expect(scope.showBigImage).toBe(true);
+      scope.showBigImage.should.equal(true);
       scope.resize();
-      expect(scope.showBigImage).toBe(false);
+      scope.showBigImage.should.equal(false);
       scope.resize();
-      expect(scope.showBigImage).toBe(true);
+      scope.showBigImage.should.equal(true);
     });
   });
 });

@@ -1,5 +1,3 @@
-'use strict';
-
 describe('Phonecat Services', function() {
 
   describe('Phone service', function(){
@@ -8,7 +6,7 @@ describe('Phonecat Services', function() {
 
     // Test service availability
     it('check the existence of Phone factory', inject(function(Phone) {
-      expect(Phone).toBeDefined();
+      should.exist(Phone);
     }));
   });
 });
