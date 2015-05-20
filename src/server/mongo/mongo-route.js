@@ -29,6 +29,8 @@ module.exports = function(server, config){
 
   function handleGet(req, res, next) {
     debug('GET-request recieved');
+    var db = req.params.db || 'phonecat';
+    var collection = req.params.collection || 'phones';
     var query;
 
     // Providing an id overwrites giving a query in the URL
@@ -63,9 +65,9 @@ module.exports = function(server, config){
 
     debug('Query is ' + JSON.stringify(query));
 
-    MongoClient.connect(util.connectionURL(req.params.db, connection), function (err, db) {
+    MongoClient.connect(util.connectionURL(db, connection), function (err, db) {
       if(err){return next(err);}
-      db.collection(req.params.collection, function (err, collection) {
+      db.collection(collection, function (err, collection) {
         if(err){return next(err);}
         collection.find(query, options, function (err, cursor) {
           if(err){return next(err);}
@@ -81,10 +83,14 @@ module.exports = function(server, config){
                 res.status(404).send('');
               }
             } else {
-              docs.forEach(function (doc) {
-                result.push(util.flavorize(doc, 'out'));
-              });
-              res.send(result);
+              if(docs.length === 1){
+                res.send(util.flavorize(docs[0], 'out'));
+              } else {
+                docs.forEach(function (doc) {
+                  result.push(util.flavorize(doc, 'out'));
+                });
+                res.send(result);
+              }
             }
             db.close();
           });
