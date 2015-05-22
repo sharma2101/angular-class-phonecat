@@ -1,0 +1,22 @@
+<script type="text/ng-template" id="login-error-messages">
+  <div ng-message="required">A username is required. </div>
+  <div ng-message="minlength">Atleast 2 characters. </div>
+  <div ng-message="maxlength">Less or equal 5. </div>
+</script>
+
+<form name="loginForm">
+  <label>
+    Username: <input ng-model='username' name="username" required ng-minlength="2" ng-maxlength="5" class="form-control" />
+  </label>
+  <div ng-messages="loginForm.username.$error" ng-messages-include="login-error-messages" role="alert" class="bg-warn">
+
+  </div>
+  <label>
+    Password: <input ng-model='password' name="password" type='password' password-validate class="form-control" />
+  </label>
+  <div ng-messages="loginForm.password.$error" ng-messages-include="login-error-messages"  role="alert" class="bg-warn">
+    <div ng-message="passwordValid">Password invalid. </div>
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="login()">Login</button>
+  <p ng-show="errorLoggingIn">There was an error logging in<p>
+</form>

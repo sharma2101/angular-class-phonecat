@@ -9,6 +9,9 @@
 
 <p>{{phone.description}}</p>
 
+
+<a href="#/phones/{{phone.phoneId}}/edit">Edit</a>
+
 <ul class="phone-thumbs">
   <li ng-repeat="img in phone.images">
     <img ng-src="{{img}}" ng-click="setImage(img)">
